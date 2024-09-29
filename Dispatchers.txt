@@ -1,0 +1,1 @@
+Character->OnTestDelegate.AddDynamic(this, &ADispachers::DoSomething);

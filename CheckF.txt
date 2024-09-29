@@ -1,0 +1,2 @@
+CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
+checkf(CameraBoom != nullptr, TEXT("The CameraBoom is nullptr"));

@@ -1,0 +1,3 @@
+PublicIncludePaths.Add("Snake"); "մեջը գրում ենք մեր ֆայլի անունը "
+
+PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;

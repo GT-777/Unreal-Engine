@@ -1,0 +1,36 @@
+#include <iostream>
+
+struct Node {
+
+	int val;
+	Node* left;
+	Node* right;
+
+	Node(int val = 0, Node* left = nullptr, Node* right = nullptr) : val(val), left(left), right(right) {}
+	~Node() {}
+
+};
+
+void DFS(Node*root) {
+	if (root == nullptr) return;
+	std::cout << root->val << ' ';
+	DFS(root->left);
+	DFS(root->right);
+}
+
+/*
+            1
+	  /   \
+	 2     3
+       / \    / \
+      4  5    6  7
+
+   */
+
+int main() {
+
+	Node* root = new Node(1, new Node(2, new Node(4), new Node(5)), new Node(3, new Node(6), new Node(7)));
+
+	DFS(root);
+
+}

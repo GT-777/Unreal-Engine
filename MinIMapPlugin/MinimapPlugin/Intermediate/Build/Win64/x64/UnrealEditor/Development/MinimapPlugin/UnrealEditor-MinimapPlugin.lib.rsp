@@ -1,0 +1,23 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UnrealEditor-MinimapPlugin.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"C:\Users\NeoGraph\Documents\Unreal Projects\TestMiniMap\Intermediate\Build\Win64\x64\TestMiniMapEditor\Development\UnrealEd\SharedPCH.UnrealEd.Project.ValApi.Cpp20.h.obj"
+"C:\Users\NeoGraph\Documents\Unreal Projects\TestMiniMap\Plugins\MinimapPlugin\Intermediate\Build\Win64\x64\UnrealEditor\Development\MinimapPlugin\Module.MinimapPlugin.1.cpp.obj"
+"C:\Users\NeoGraph\Documents\Unreal Projects\TestMiniMap\Plugins\MinimapPlugin\Intermediate\Build\Win64\x64\UnrealEditor\Development\MinimapPlugin\Module.MinimapPlugin.2.cpp.obj"
+"C:\Users\NeoGraph\Documents\Unreal Projects\TestMiniMap\Plugins\MinimapPlugin\Intermediate\Build\Win64\x64\UnrealEditor\Development\MinimapPlugin\MapAreaBase.cpp.obj"
+"C:\Users\NeoGraph\Documents\Unreal Projects\TestMiniMap\Plugins\MinimapPlugin\Intermediate\Build\Win64\x64\UnrealEditor\Development\MinimapPlugin\MapBackground.cpp.obj"
+"C:\Users\NeoGraph\Documents\Unreal Projects\TestMiniMap\Plugins\MinimapPlugin\Intermediate\Build\Win64\x64\UnrealEditor\Development\MinimapPlugin\MapFog.cpp.obj"
+"C:\Users\NeoGraph\Documents\Unreal Projects\TestMiniMap\Plugins\MinimapPlugin\Intermediate\Build\Win64\x64\UnrealEditor\Development\MinimapPlugin\MapFunctionLibrary.cpp.obj"
+"C:\Users\NeoGraph\Documents\Unreal Projects\TestMiniMap\Plugins\MinimapPlugin\Intermediate\Build\Win64\x64\UnrealEditor\Development\MinimapPlugin\MapIconComponent.cpp.obj"
+"C:\Users\NeoGraph\Documents\Unreal Projects\TestMiniMap\Plugins\MinimapPlugin\Intermediate\Build\Win64\x64\UnrealEditor\Development\MinimapPlugin\MapRendererComponent.cpp.obj"
+"C:\Users\NeoGraph\Documents\Unreal Projects\TestMiniMap\Plugins\MinimapPlugin\Intermediate\Build\Win64\x64\UnrealEditor\Development\MinimapPlugin\MapRevealerComponent.cpp.obj"
+"C:\Users\NeoGraph\Documents\Unreal Projects\TestMiniMap\Plugins\MinimapPlugin\Intermediate\Build\Win64\x64\UnrealEditor\Development\MinimapPlugin\MapTrackerComponent.cpp.obj"
+"C:\Users\NeoGraph\Documents\Unreal Projects\TestMiniMap\Plugins\MinimapPlugin\Intermediate\Build\Win64\x64\UnrealEditor\Development\MinimapPlugin\MapViewComponent.cpp.obj"
+"C:\Users\NeoGraph\Documents\Unreal Projects\TestMiniMap\Plugins\MinimapPlugin\Intermediate\Build\Win64\x64\UnrealEditor\Development\MinimapPlugin\MinimapPlugin.cpp.obj"
+"C:\Users\NeoGraph\Documents\Unreal Projects\TestMiniMap\Plugins\MinimapPlugin\Intermediate\Build\Win64\x64\UnrealEditor\Development\MinimapPlugin\Default.rc2.res"
+/OUT:"C:\Users\NeoGraph\Documents\Unreal Projects\TestMiniMap\Plugins\MinimapPlugin\Intermediate\Build\Win64\x64\UnrealEditor\Development\MinimapPlugin\UnrealEditor-MinimapPlugin.lib"

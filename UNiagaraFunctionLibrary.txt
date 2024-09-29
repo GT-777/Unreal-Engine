@@ -1,0 +1,8 @@
+#include "NiagaraFunctionLibrary.h" in cpp
+
+	UPROPERTY(EditAnywhere, Category = "Audio")
+	TObjectPtr<class UNiagaraSystem > NS_Fire = nullptr;
+	if (NS_Fire)
+{
+	UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(), NS_Fire, this->GetActorLocation());
+}

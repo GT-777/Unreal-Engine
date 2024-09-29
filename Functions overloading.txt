@@ -1,0 +1,22 @@
+#include <iostream>
+
+template <typename T>
+T add(int a, int b);
+
+template <>
+int add<int>(int a, int b) {  //int add(int a, int b)
+    return a + b;
+}
+
+template <>
+double add<double>(int a, int b) {   // double add(int a, int b)
+    return static_cast<double>(a + b);  
+}
+
+int main() {
+    int intResult = add<int>(1, 2);        // Calls add<int>(int, int)
+    double doubleResult = add<double>(1, 2);  // Calls add<double>(int, int)
+    std::cout << "Int result: " << intResult << std::endl;
+    std::cout << "Double result: " << doubleResult << std::endl;
+    return 0;
+}

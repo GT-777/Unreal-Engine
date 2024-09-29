@@ -1,0 +1,5 @@
+EnhancedInputComponent->BindAction(EThing, ETriggerEvent::Completed, this, &AMyFirstPersonCPPCharacter::Dispatcher);եթե Completed տեղը գրենք Triggered ինչքան սեխմված մնա այդքան կաշխատի
+
+
+
+https://youtu.be/I-VBDt6O2gM?si=qL7OltlEJRO66kFk

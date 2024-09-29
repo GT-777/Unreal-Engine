@@ -1,0 +1,15 @@
+
+UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = true))
+TObjectPtr<class UUserWidget> HighLowWidgetRef = nullptr
+		
+
+UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = true))
+TSubclassOf<class UUserWidget> HighLowWidget;
+
+
+
+
+HighLowWidgetRef = CreateWidget<UUserWidget>(GetWorld(), HighLowWidget);
+
+
+virtual void StartPlay() override;

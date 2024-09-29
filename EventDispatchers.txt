@@ -1,0 +1,9 @@
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FTestDelegate);
+
+	
+	ADataAssetCharacter* overlappedCharacter = Cast<ADataAssetCharacter>(GetWorld()->GetFirstPlayerController()->GetCharacter());
+
+	if (overlappedCharacter->IsValidLowLevel())
+	{
+		overlappedCharacter->PLayerJump.AddDynamic(this, &ADispachers::WhenPlayerPress);
+	}

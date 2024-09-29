@@ -1,0 +1,4 @@
+SpawnCoinMesh();
+this->Destroy(true); 
+
+Spawn անել հետո Destroy

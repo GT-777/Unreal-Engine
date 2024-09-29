@@ -1,0 +1,15 @@
+
+	UPROPERTY()
+	TArray<int32> number;
+
+	for (int i = 0; i < 5; i++)
+	{
+		number.Add(i);
+
+	}
+	
+	for (int32 i = 0; i < number.Num(); i++)
+	{
+
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("The value of i is: %d"), number[3]));
+	}

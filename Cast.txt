@@ -1,0 +1,8 @@
+for (const auto actor : Actor)
+{
+	IMyInterface* TheInterface = Cast<IMyInterface>(actor);
+	if (TheInterface)
+	{
+		TheInterface->Activate();
+	}
+}

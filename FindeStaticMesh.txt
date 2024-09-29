@@ -1,0 +1,14 @@
+static ConstructorHelpers::FObjectFinder<UStaticMesh> DefaultMesh(TEXT("/Game/StarterContent/Shapes/Shape_Sphere.Shape_Sphere"));
+
+FObjectFinder<UStaticMesh>: Այս դասը օգտագործվում է Unreal Engine-ում ռեսուրսների (օրինակ՝ 3D մոդելների) որոնման համար:
+DefaultMesh: Սա մի օբյեկտ է, որը որոնում է 3D մոդելը տվյալ կարգավորումների մեջ: Այն ապացուցում է, որ այն կգտնի Shape_Sphere մոդելը, որը գտնվում է StarterContent պանակում:
+TEXT("/Game/StarterContent/Shapes/Shape_Sphere.Shape_Sphere"): Սա տվյալ մոդելի փաստացի ուղին է, որը դուք ուզում եք օգտագործել: Այն ցույց է տալիս, թե որտեղ է գտնվում ֆայլը Unreal Engine-ի նախագծում:
+
+if (DefaultMesh.Succeeded())
+{
+    StaticMesh->SetStaticMesh(DefaultMesh.Object);
+    StaticMesh->SetRelativeLocation(FVector(0.0f, 0.0f, -37.5f));
+    StaticMesh->SetRelativeScale3D(FVector(0.75f, 0.75f, 0.75f));
+}
+DefaultMesh.Succeeded(): Սա ստուգում է, թե արդյոք մոդելը հաջողությամբ գտնվել է: Եթե եղած է, ապա կկատարվեն հետևյալ գործողությունները:
+SetStaticMesh(DefaultMesh.Object): Տեղադրում է գտած մոդելը StaticMesh կոմպոնենտի վրա:

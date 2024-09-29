@@ -1,0 +1,15 @@
+
+	UPROPERTY(EditAnywhere, Category = "Audio")
+	TObjectPtr <class UAudioComponent> SoundToPlaye = nullptr;
+
+
+	SoundToPlaye = CreateDefaultSubobject<UAudioComponent>(TEXT("SoundToPlaye"));
+	checkf(SoundToPlaye != nullptr, TEXT("SoundToPlaye is nullptr"));
+	SoundToPlaye->bAutoActivate = false;
+	SoundToPlaye->SetupAttachment(ISMBricks);
+
+if (IsValid(SoundToPlaye))
+{
+	SoundToPlaye->Play();
+
+}

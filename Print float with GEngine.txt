@@ -1,0 +1,8 @@
+GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, "Hit");
+
+FString PointString = FString::Printf(TEXT("Point: %d"), Point);
+    GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, PointString);
+
+
+
+GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, FString::Printf(TEXT("Point: %d"), Point));

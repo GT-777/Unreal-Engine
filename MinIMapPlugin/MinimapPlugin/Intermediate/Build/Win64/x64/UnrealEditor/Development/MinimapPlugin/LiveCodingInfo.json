@@ -1,0 +1,25 @@
+{
+	"RemapUnityFiles": 
+	{
+		"Module.MinimapPlugin.1.cpp.obj": [
+			"MapAreaBase.gen.cpp.obj",
+			"MapBackground.gen.cpp.obj",
+			"MapEnums.gen.cpp.obj",
+			"MapFog.gen.cpp.obj",
+			"MapFunctionLibrary.gen.cpp.obj",
+			"MapIconComponent.gen.cpp.obj"
+		],
+		"Module.MinimapPlugin.2.cpp.obj": [
+			"MapRendererComponent.gen.cpp.obj",
+			"MapRevealerComponent.gen.cpp.obj",
+			"MapTrackerComponent.gen.cpp.obj",
+			"MapViewComponent.gen.cpp.obj",
+			"MinimapPlugin.init.gen.cpp.obj",
+			"MapAreaBase.cpp.obj",
+			"MapBackground.cpp.obj",
+			"MapFog.cpp.obj",
+			"MapFunctionLibrary.cpp.obj",
+			"MapIconComponent.cpp.obj"
+		]
+	}
+}

@@ -1,0 +1,33 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\users\\neograph\\documents\\unreal projects\\testminimap\\plugins\\minimapplugin\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\minimapplugin\\module.minimapplugin.1.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\users\\neograph\\documents\\unreal projects\\testminimap\\intermediate\\build\\win64\\x64\\testminimapeditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
+        "Includes": [
+            "c:\\users\\neograph\\documents\\unreal projects\\testminimap\\plugins\\minimapplugin\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\minimapplugin\\definitions.minimapplugin.h",
+            "c:\\users\\neograph\\documents\\unreal projects\\testminimap\\plugins\\minimapplugin\\intermediate\\build\\win64\\unrealeditor\\inc\\minimapplugin\\uht\\mapareabase.gen.cpp",
+            "c:\\users\\neograph\\documents\\unreal projects\\testminimap\\plugins\\minimapplugin\\source\\minimapplugin\\public\\mapareabase.h",
+            "c:\\users\\neograph\\documents\\unreal projects\\testminimap\\plugins\\minimapplugin\\intermediate\\build\\win64\\unrealeditor\\inc\\minimapplugin\\uht\\mapareabase.generated.h",
+            "c:\\users\\neograph\\documents\\unreal projects\\testminimap\\plugins\\minimapplugin\\intermediate\\build\\win64\\unrealeditor\\inc\\minimapplugin\\uht\\mapbackground.gen.cpp",
+            "c:\\users\\neograph\\documents\\unreal projects\\testminimap\\plugins\\minimapplugin\\source\\minimapplugin\\public\\mapbackground.h",
+            "c:\\users\\neograph\\documents\\unreal projects\\testminimap\\plugins\\minimapplugin\\intermediate\\build\\win64\\unrealeditor\\inc\\minimapplugin\\uht\\mapbackground.generated.h",
+            "c:\\users\\neograph\\documents\\unreal projects\\testminimap\\plugins\\minimapplugin\\intermediate\\build\\win64\\unrealeditor\\inc\\minimapplugin\\uht\\mapenums.gen.cpp",
+            "c:\\users\\neograph\\documents\\unreal projects\\testminimap\\plugins\\minimapplugin\\source\\minimapplugin\\public\\mapenums.h",
+            "c:\\users\\neograph\\documents\\unreal projects\\testminimap\\plugins\\minimapplugin\\intermediate\\build\\win64\\unrealeditor\\inc\\minimapplugin\\uht\\mapenums.generated.h",
+            "c:\\users\\neograph\\documents\\unreal projects\\testminimap\\plugins\\minimapplugin\\intermediate\\build\\win64\\unrealeditor\\inc\\minimapplugin\\uht\\mapfog.gen.cpp",
+            "c:\\users\\neograph\\documents\\unreal projects\\testminimap\\plugins\\minimapplugin\\source\\minimapplugin\\public\\mapfog.h",
+            "c:\\users\\neograph\\documents\\unreal projects\\testminimap\\plugins\\minimapplugin\\intermediate\\build\\win64\\unrealeditor\\inc\\minimapplugin\\uht\\mapfog.generated.h",
+            "c:\\users\\neograph\\documents\\unreal projects\\testminimap\\plugins\\minimapplugin\\intermediate\\build\\win64\\unrealeditor\\inc\\minimapplugin\\uht\\mapfunctionlibrary.gen.cpp",
+            "c:\\users\\neograph\\documents\\unreal projects\\testminimap\\plugins\\minimapplugin\\source\\minimapplugin\\public\\mapfunctionlibrary.h",
+            "c:\\users\\neograph\\documents\\unreal projects\\testminimap\\plugins\\minimapplugin\\intermediate\\build\\win64\\unrealeditor\\inc\\minimapplugin\\uht\\mapfunctionlibrary.generated.h",
+            "c:\\users\\neograph\\documents\\unreal projects\\testminimap\\plugins\\minimapplugin\\intermediate\\build\\win64\\unrealeditor\\inc\\minimapplugin\\uht\\mapiconcomponent.gen.cpp",
+            "c:\\users\\neograph\\documents\\unreal projects\\testminimap\\plugins\\minimapplugin\\source\\minimapplugin\\public\\mapiconcomponent.h",
+            "c:\\program files\\epic games\\ue_5.4\\engine\\source\\runtime\\engine\\classes\\components\\billboardcomponent.h",
+            "c:\\program files\\epic games\\ue_5.4\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\billboardcomponent.generated.h",
+            "c:\\users\\neograph\\documents\\unreal projects\\testminimap\\plugins\\minimapplugin\\intermediate\\build\\win64\\unrealeditor\\inc\\minimapplugin\\uht\\mapiconcomponent.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

@@ -1,0 +1,181 @@
+// Fill out your copyright notice in the Description page of Project Settings.
+
+
+#include "ISMBricks/ISMBricks.h"
+#include "Components/InstancedStaticMeshComponent.h"
+#include "Components/BoxComponent.h"
+#include "Kismet/GameplayStatics.h"
+#include "Components/AudioComponent.h"
+#include "NiagaraFunctionLibrary.h"
+
+// Sets default values
+AISMBricks::AISMBricks()
+{
+	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	PrimaryActorTick.bCanEverTick = true;
+
+	ISMBricks = CreateDefaultSubobject<UInstancedStaticMeshComponent>(TEXT("ISMBricks"));
+	checkf(ISMBricks != nullptr, TEXT("ISMBricks is nullptr"));
+
+	BoxCollision = CreateDefaultSubobject<UBoxComponent>(TEXT("BoxCollison"));
+	checkf(BoxCollision != nullptr, TEXT("BoxCollison is nullptr"));
+
+	BoxCollision->OnComponentBeginOverlap.AddDynamic(this, &AISMBricks::OnOverlapBegin);
+	//BoxCollision->OnComponentEndOverlap.AddDynamic(this, &AISMBricks::OnOverlapEnd);
+
+	RootComponent = ISMBricks;
+
+	BoxCollision->SetupAttachment(ISMBricks);
+
+	SoundToPlaye = CreateDefaultSubobject<UAudioComponent>(TEXT("SoundToPlaye"));
+	checkf(SoundToPlaye != nullptr, TEXT("SoundToPlaye is nullptr"));
+	SoundToPlaye->bAutoActivate = false;
+	SoundToPlaye->SetupAttachment(ISMBricks);
+
+	X = { 0.0f };
+	Y = { 0.0f };
+	Z = { 0.0f };
+
+
+}
+
+// Called when the game starts or when spawned
+void AISMBricks::BeginPlay()
+{
+	Super::BeginPlay();
+
+	
+	
+		GetWorld()->GetTimerManager().SetTimer(InOutHandle, this, &AISMBricks::AddStaticMeshInstance, 0.5, true);
+
+	
+
+}
+
+// Called every frame
+void AISMBricks::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+}
+
+void AISMBricks::OnOverlapBegin(UPrimitiveComponent* OverlappedComp,
+	AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex,
+	bool bFromSweep, const FHitResult& SweepResult)
+{
+	/*X = 0.0f;
+	for (int i = 0; i < 5; i++)
+	{
+		Y = 0.0f;
+		X += 80.0f;
+		for (int j = 0; j < 5; j++)
+
+			Y += 300.0f;
+		}
+
+	}
+	Z += 70;*/
+
+}
+
+void AISMBricks::AddStaticMeshInstance()
+{
+
+	++X;
+
+	if (IsValid(SoundToPlaye))
+	{
+		SoundToPlaye->Play();
+
+	}
+
+	FVector Location{ X * 80, Y * 100, Z * 100 };
+	if (SondBase)
+	{
+		UGameplayStatics::PlaySoundAtLocation(GetWorld(), SondBase, this->GetActorLocation());
+	}
+	
+	if (NS_Fire)
+	{
+		UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(), NS_Fire, this->GetActorLocation());
+	}
+	FRotator Rotaion{ 0.0f, 0.0f, 0.0f };
+	FVector Scale{ 1.0f,1.0f, 1.0f };
+	FTransform Transform{ Rotaion,Location,Scale };
+
+
+
+	int32 BoxCount = ISMBricks->AddInstance(Transform);
+
+	if (BoxCount == 5)
+	{
+		X = 0.0f;
+		Y = 1.0f;
+	}
+	else if(BoxCount == 11)
+	{
+		X = 0.0f;
+		Y = 2.0f;
+
+
+	}
+	else if (BoxCount == 17)
+	{
+		X = 0.0f;
+		Y = 0.0f;
+		Z = 1.0f;
+
+	}
+	else if (BoxCount == 23)
+	{
+		X = 0.0f;
+		Y = 1.0f;
+		Z = 1.0f;
+	}
+	else if (BoxCount == 29)
+	{
+		X = 0.0f;
+		Y = 2.0f;
+		Z = 1.0f;
+	}
+	else if (BoxCount == 35)
+	{
+		--X;
+		GetWorld()->GetTimerManager().PauseTimer(InOutHandle);
+	}
+
+	
+}
+	
+   
+	
+
+
+//
+//void AISMBricks::OnOverlapEnd(UPrimitiveComponent* OverlappedComp, 
+//	AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
+//{
+//	X = 0.0f;
+//	FVector Location;
+//	FRotator Rotation{ 0.0f, 0.0f, 0.0f };
+//	FVector Scale{ 1.0f, 1.0f, 1.0f };
+//	FTransform Transform{ Rotation, Location, Scale };
+//
+//	for (size_t i = 0; i < 5; i++)
+//	{
+//		Y = 0.0f;
+//		X += 100.0f;
+//		for (size_t j = 0; j < 5; j++)
+//		{
+//			Location = FVector{ X, Y, Z }; 
+//			Transform.SetLocation(Location);
+//
+//			ISMBricks->AddInstance(Transform);
+//			Y += 10.0f;
+//		}
+//	}
+//	Z += 40;
+//			ISMBricks->SetVisibility(false);
+//}
+
+

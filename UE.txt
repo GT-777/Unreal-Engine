@@ -1,0 +1,22 @@
+TArray<FHitResult> OutHits; 
+
+FVector ActorLocation = GetActorLocation();
+
+FCollisionShape MyColSphere = FCollisionShape::MakeSphere(500.f);
+
+DrawDebugSphere(GetWorld(), ActorLocation, MyColSphere.GetSphereRadius(), 100, FColor::Purple, true);
+
+bool isHit = GetWorld()->SweepMultiByChannel(OutHits, ActorLocation, ActorLocation, FQuat::Identity, ECC_WorldStatic, MyColSphere);
+
+if (isHit)
+{
+	for (auto& Hit : OutHits)
+	{
+		if (GEngine)
+		{
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("Hit Result: %s"), *Hit.Actor->GetName()));
+		}
+	}
+}
+
+GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("  %d"), CoinCount));//print number

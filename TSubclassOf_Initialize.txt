@@ -1,0 +1,5 @@
+UPROPERTY(EditDefaultsOnly, Category = "Gameplay|Projectile")
+TSubclassOf<class AThirdPersonMPProjectile> ProjectileClass;
+
+//Initialize projectile class
+ProjectileClass = AThirdPersonMPProjectile::StaticClass();

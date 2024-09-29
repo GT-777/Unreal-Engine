@@ -1,0 +1,32 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\users\\neograph\\documents\\unreal projects\\testminimap\\plugins\\minimapplugin\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\minimapplugin\\module.minimapplugin.2.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\users\\neograph\\documents\\unreal projects\\testminimap\\intermediate\\build\\win64\\x64\\testminimapeditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
+        "Includes": [
+            "c:\\users\\neograph\\documents\\unreal projects\\testminimap\\plugins\\minimapplugin\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\minimapplugin\\definitions.minimapplugin.h",
+            "c:\\users\\neograph\\documents\\unreal projects\\testminimap\\plugins\\minimapplugin\\intermediate\\build\\win64\\unrealeditor\\inc\\minimapplugin\\uht\\maprenderercomponent.gen.cpp",
+            "c:\\users\\neograph\\documents\\unreal projects\\testminimap\\plugins\\minimapplugin\\source\\minimapplugin\\public\\maprenderercomponent.h",
+            "c:\\users\\neograph\\documents\\unreal projects\\testminimap\\plugins\\minimapplugin\\source\\minimapplugin\\public\\mapenums.h",
+            "c:\\users\\neograph\\documents\\unreal projects\\testminimap\\plugins\\minimapplugin\\intermediate\\build\\win64\\unrealeditor\\inc\\minimapplugin\\uht\\mapenums.generated.h",
+            "c:\\users\\neograph\\documents\\unreal projects\\testminimap\\plugins\\minimapplugin\\intermediate\\build\\win64\\unrealeditor\\inc\\minimapplugin\\uht\\maprenderercomponent.generated.h",
+            "c:\\users\\neograph\\documents\\unreal projects\\testminimap\\plugins\\minimapplugin\\intermediate\\build\\win64\\unrealeditor\\inc\\minimapplugin\\uht\\maprevealercomponent.gen.cpp",
+            "c:\\users\\neograph\\documents\\unreal projects\\testminimap\\plugins\\minimapplugin\\source\\minimapplugin\\public\\maprevealercomponent.h",
+            "c:\\program files\\epic games\\ue_5.4\\engine\\source\\runtime\\engine\\classes\\components\\boxcomponent.h",
+            "c:\\program files\\epic games\\ue_5.4\\engine\\source\\runtime\\engine\\classes\\components\\shapecomponent.h",
+            "c:\\program files\\epic games\\ue_5.4\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\shapecomponent.generated.h",
+            "c:\\program files\\epic games\\ue_5.4\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\boxcomponent.generated.h",
+            "c:\\users\\neograph\\documents\\unreal projects\\testminimap\\plugins\\minimapplugin\\intermediate\\build\\win64\\unrealeditor\\inc\\minimapplugin\\uht\\maprevealercomponent.generated.h",
+            "c:\\users\\neograph\\documents\\unreal projects\\testminimap\\plugins\\minimapplugin\\intermediate\\build\\win64\\unrealeditor\\inc\\minimapplugin\\uht\\maptrackercomponent.gen.cpp",
+            "c:\\users\\neograph\\documents\\unreal projects\\testminimap\\plugins\\minimapplugin\\source\\minimapplugin\\public\\maptrackercomponent.h",
+            "c:\\users\\neograph\\documents\\unreal projects\\testminimap\\plugins\\minimapplugin\\intermediate\\build\\win64\\unrealeditor\\inc\\minimapplugin\\uht\\maptrackercomponent.generated.h",
+            "c:\\users\\neograph\\documents\\unreal projects\\testminimap\\plugins\\minimapplugin\\intermediate\\build\\win64\\unrealeditor\\inc\\minimapplugin\\uht\\mapviewcomponent.gen.cpp",
+            "c:\\users\\neograph\\documents\\unreal projects\\testminimap\\plugins\\minimapplugin\\source\\minimapplugin\\public\\mapviewcomponent.h",
+            "c:\\users\\neograph\\documents\\unreal projects\\testminimap\\plugins\\minimapplugin\\intermediate\\build\\win64\\unrealeditor\\inc\\minimapplugin\\uht\\mapviewcomponent.generated.h",
+            "c:\\users\\neograph\\documents\\unreal projects\\testminimap\\plugins\\minimapplugin\\intermediate\\build\\win64\\unrealeditor\\inc\\minimapplugin\\uht\\minimapplugin.init.gen.cpp"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

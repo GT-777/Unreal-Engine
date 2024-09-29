@@ -1,0 +1,10 @@
+// Inside an Actor class constructor
+UStaticMeshComponent* MeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MeshComponent"));
+
+UObject* NewObject = NewObject<UObject>();
+
+AMyActor* NewActor = GetWorld()->SpawnActor<AMyActor>(AMyActor::StaticClass(), SpawnLocation, SpawnRotation);
+
+UMyUserWidget* WidgetInstance = CreateWidget<UMyUserWidget>(GetWorld(), UMyUserWidget::StaticClass());
+
+UObject* NewObject = StaticConstructObject(UObject::StaticClass());

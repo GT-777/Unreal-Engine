@@ -1,0 +1,47 @@
+#include <iostream>
+
+int binarySearch(int *arr, int target, int n)
+{
+    int min = 0;
+    int max = n - 1;
+
+    while (min <= max)
+    {
+        int guess = (min + max) / 2;
+
+        if (arr[guess] == target)
+        {
+            return guess;
+        }
+        else if (arr[guess] < target)
+        {
+            min = guess + 1;
+        }
+        else
+        {
+            max = guess - 1;
+        }
+    }
+
+    // Target not found, return an appropriate value (e.g., -1)
+    return -1;
+}
+
+int main()
+{
+    const int n = 10;
+    int arr[n] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    int target = 10;
+
+    int p = binarySearch(arr, target, n);
+    if (p != -1)
+    {
+        std::cout << "Target found at index: " << p << std::endl;
+    }
+    else
+    {
+        std::cout << "Target not found." << std::endl;
+    }
+
+    return 0;
+}

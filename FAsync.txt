@@ -1,0 +1,19 @@
+FAsyncTask<MyTask> MyAsyncTask;
+MyAsyncTask.StartBackgroundTask();
+
+FGraphEventRef   FGraphEventRef MyEvent = FFunctionGraphTask::CreateAndDispatchWhenReady([]()
+{
+    // Task code here
+});
+
+FRunnable    class MyRunnable : public FRunnable
+{
+public:
+    virtual uint32 Run() override
+    {
+        // Thread code here
+        return 0;
+    }
+}
+
+

@@ -1,0 +1,4 @@
+https://dev.epicgames.com/documentation/en-us/unreal-engine/debugging-unreal-engine-projects-for-android-in-visual-studio-with-the-agde-plugin
+
+
+https://developer.android.com/studio/releases/past-releases/as-flamingo-release-notes

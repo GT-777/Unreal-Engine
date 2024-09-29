@@ -1,0 +1,28 @@
+Monday - Friday Schedule
+8:30 AM - 10:30 AM
+Hands-On Development:
+
+Work on your game project (Blueprints, C++, Level Design).
+10:30 AM - 12:00 PM
+Learning with Video Tutorials:
+
+Watch videos related to Unreal Engine (Blueprints, C++, UI, Networking, etc.).
+12:00 PM - 1:00 PM
+Lunch Break
+
+1:00 PM - 2:30 PM
+Reading (Book Study):
+
+Read 1-1.5 chapters from an Unreal Engine book.
+2:30 PM - 3:30 PM
+Project Development:
+
+Apply what you’ve learned from videos and books to your project.
+3:30 PM - 4:30 PM
+Self-Study or Testing:
+
+Experiment with new Unreal features, test your project, or fix bugs.
+Saturday
+Morning (8:30 AM - 9:30 AM): Deep dive into advanced book topics.
+9:30 AM - 1:00 PM: Long project sprint – focus on more complex tasks.
+I’ll remind you of the key times for each activity!

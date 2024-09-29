@@ -1,0 +1,5 @@
+GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &AISMBricks::AddStaticMeshInstance, 0.5f, true);
+TimerHandle-Timer-ը կառավարելու համար է օրինակ՝ GetWorld()->GetTimerManager().PauseTimer(TimerHandle);
+GetWorld()->GetTimerManager().UnPauseTimer(TimerHandle);
+bool bIsActive = GetWorld()->GetTimerManager().IsTimerActive(TimerHandle);
+GetWorld()->GetTimerManager().ClearTimer(TimerHandle);

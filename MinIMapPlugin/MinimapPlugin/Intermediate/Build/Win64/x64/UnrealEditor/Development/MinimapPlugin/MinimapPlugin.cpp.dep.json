@@ -1,0 +1,14 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\users\\neograph\\documents\\unreal projects\\testminimap\\plugins\\minimapplugin\\source\\minimapplugin\\private\\minimapplugin.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\users\\neograph\\documents\\unreal projects\\testminimap\\intermediate\\build\\win64\\x64\\testminimapeditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
+        "Includes": [
+            "c:\\users\\neograph\\documents\\unreal projects\\testminimap\\plugins\\minimapplugin\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\minimapplugin\\definitions.minimapplugin.h",
+            "c:\\users\\neograph\\documents\\unreal projects\\testminimap\\plugins\\minimapplugin\\source\\minimapplugin\\public\\minimapplugin.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

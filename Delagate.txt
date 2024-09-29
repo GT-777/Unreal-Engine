@@ -1,0 +1,24 @@
+in character class
+UDELEGATE()
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnPlayerJump, FVector, Location);
+
+
+	UPROPERTY(BlueprintAssignable, Category = "EventDispachers")
+	FOnPlayerJump PlayerJump;
+
+
+oter class 
+#include "../DelagateCharacter.h"  in cpp
+void AMyActor::BeginPlay()
+{
+	Super::BeginPlay();
+	APlayerController* PlayerController = GetWorld()->GetFirstPlayerController();
+
+	ADelagateCharacter* Character = Cast<ADelagateCharacter>(PlayerController->GetCharacter());
+	if (IsValid(Character))
+	{
+		Character->PlayerJump.AddDynamic(this, &AMyActor::ChangeMaterial);
+
+	}
+
+}
