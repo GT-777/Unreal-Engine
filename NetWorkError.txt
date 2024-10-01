@@ -1,0 +1,6 @@
+1>C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.MakeFile.Targets(44,5): error MSB3073: The command ""C:\Program Files\Epic Games\UE_5.4\Engine\Build\BatchFiles\Build.bat" ShooteWithPersonEditor Win64 Development -Project="C:\Users\gevor\Documents\ShooteWithPerson\ShooteWithPerson.uproject" -WaitMutex -FromMsBuild -architecture=x64" exited with code 6.  
+
+
+եթե ունենք ReplicatedUsing արած փոփոխական պարտադիր պետք է գրենք 
+virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override; 
+մեթոդը
