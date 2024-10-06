@@ -1,0 +1,16 @@
+MyObject = NewObject<UYourClass>(Outer); // Outer can be 'this' or another valid UObject
+UMyComponent* MyComponent = NewObject<UMyComponent>(this);
+
+
+AYourActor* MyActor = GetWorld()->SpawnActor<AYourActor>(Location, Rotation);
+AWeapon* MyWeapon = GetWorld()->SpawnActor<AWeapon>(FVector(0.0f), FRotator(0.0f));
+
+
+MyComponent = CreateDefaultSubobject<UYourComponent>(TEXT("ComponentName"));
+
+//DuplicateObject
+UMyObject* DuplicatedObject = DuplicateObject<UMyObject>(SourceObject, NewOuter);
+
+
+//LoadObject
+UTexture2D* Texture = LoadObject<UTexture2D>(nullptr, TEXT("/Game/Textures/MyTexture"));
