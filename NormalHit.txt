@@ -1,0 +1,38 @@
+ AZSWheeledVehiclePawnBase::NormalHit(AActor* OtherActor, const FHitResult& Hit)
+{
+	if(bIsPosses)
+	{
+		bHitStatus = true;
+		const int32 L_HitLength = int32(Hit.Location.Length());
+		const int32 Speed = FMath::Abs(ChaosVehicleMovementComp->GetVehicleSpeed());
+		//For hit force use velocity of vehicle and other hit actor
+		const float Mass = GetMesh()->GetMass() / 1000.f;
+		float Force = Mass * Speed;
+		const float Impulse = Force;
+
+		// TODO: Don't hard code range values
+		static const FVector2D InForceRange{ 0.f, 300.f};
+		static const FVector2D OutForceRange{ 0.f, 100.f };
+
+		Force = FMath::GetMappedRangeValueClamped(InForceRange, OutForceRange, Force);
+
+		if((CurrentHitLength != L_HitLength)  && Speed != 0)
+		{
+			CurrentHitLength = L_HitLength;
+			if (Cast<AZSCharacterBase>(OtherActor))
+			{
+				return;
+			}
+
+			if (ZSUtils::IsLocalOnly(this) && IsValid(HitSoundAudioComponent))
+			{
+				HitSoundAudioComponent->PlayHitSound(Force, Hit, HitTriggers, Impulse);
+			}
+
+			if (ROLE_Authority == GetLocalRole() && IsValid(VehicleCrashDetectionComponent))
+			{
+				VehicleCrashDetectionComponent->EvaluateCollisionImpact(Impulse, Hit);
+			}
+		}
+	}
+}
