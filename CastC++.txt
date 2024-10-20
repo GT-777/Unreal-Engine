@@ -1,0 +1,28 @@
+#include "GameFramework/Actor.h"
+#include "GameFramework/PlayerController.h"
+#include "GameFramework/Character.h"
+#include "BP_ThirdPersonCharacter.h"  // Include your custom class header
+
+void AMyLevelScriptActor::BeginPlay()
+{
+    Super::BeginPlay();
+
+    // Get the player character at index 0 (usually the first player)
+    ACharacter* PlayerCharacter = UGameplayStatics::GetPlayerCharacter(GetWorld(), 0);
+
+    if (PlayerCharacter)
+    {
+        // Cast the player character to BP_ThirdPersonCharacter
+        ABP_ThirdPersonCharacter* ThirdPersonCharacter = Cast<ABP_ThirdPersonCharacter>(PlayerCharacter);
+
+        if (ThirdPersonCharacter)
+        {
+            // Successfully cast; now you can use ThirdPersonCharacter methods and properties
+            UE_LOG(LogTemp, Warning, TEXT("Successfully cast to BP_ThirdPersonCharacter"));
+        }
+        else
+        {
+            UE_LOG(LogTemp, Warning, TEXT("Cast to BP_ThirdPersonCharacter failed."));
+        }
+    }
+}
