@@ -1,0 +1,25 @@
+auto Lambda = [x](int y) { return x + y; };
+Lambda(5);
+
+
+
+generate
+
+class __Lambda_Anonymous {
+public:
+    int x;  // Store the captured variable x as a member
+
+    // Constructor to initialize the captured variable
+    __Lambda_Anonymous(int x_) : x(x_) {}
+
+    // Define the lambda body as an operator() function
+    int operator()(int y) const {  // Called when Lambda(5) is executed
+        return x + y;
+    }
+};
+
+// Usage:
+int x = 10;  // Example value of x from the surrounding scope
+__Lambda_Anonymous lambdaObj(x);  // Store x in the lambda object
+int result = lambdaObj(5);  // Execute with y = 5; result = x + y = 15
+
