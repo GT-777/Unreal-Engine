@@ -1,3 +1,4 @@
+#include "Components/AudioComponent.h"
 
 	UPROPERTY(EditAnywhere, Category = "Audio")
 	TObjectPtr <class UAudioComponent> SoundToPlaye = nullptr;
