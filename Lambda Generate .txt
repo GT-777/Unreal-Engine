@@ -23,3 +23,24 @@ int x = 10;  // Example value of x from the surrounding scope
 __Lambda_Anonymous lambdaObj(x);  // Store x in the lambda object
 int result = lambdaObj(5);  // Execute with y = 5; result = x + y = 15
 
+
+
+#include <iostream>
+
+int Test(int num)  // Test expects an integer.
+{
+	return num;
+}
+
+int main(int argc, char* args[])
+{
+	int x = 5;
+
+	// Pass the result of the lambda directly to Test().
+	auto k = Test([](int c) -> int {
+		return c + 1;  // Increment the input by 1.
+		}(x));  // Call the lambda with 'x'.
+
+	std::cout << k << std::endl;  // Output: 6
+	return 0;
+}
