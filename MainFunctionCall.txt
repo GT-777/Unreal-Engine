@@ -1,0 +1,5 @@
+int main(int argc, char* argv[])
+
+When you run ./a.out or ./myprogram, the operating system looks for the main function and starts executing the code within it.
+
+Կարող ենք այստեցից /a.out կողքից տալ պարամետր main ֆունկցիային "Example" սա փոխանցվում է argv[1]
