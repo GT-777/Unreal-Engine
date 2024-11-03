@@ -1,0 +1,67 @@
+// MyInterface.h
+UINTERFACE(Blueprintable)
+class UMyInterface : public UInterface
+{
+    GENERATED_BODY()
+};
+
+class IMyInterface
+{
+    GENERATED_BODY()
+
+public:
+    virtual void MyFunction() = 0; // Example function
+};
+
+
+// MyClassA.h
+class AMyClassA : public AActor, public IMyInterface
+{
+    virtual void MyFunction() override;
+};
+
+// MyClassB.h
+class AMyClassB : public AActor, public IMyInterface
+{
+    virtual void MyFunction() override;
+};
+
+// Repeat for other classes...
+
+
+// MyManager.h
+class AMyManager : public AActor
+{
+    GENERATED_BODY()
+
+public:
+    void CallInterfaceFunction();
+    
+private:
+    TArray<AActor*> ManagedActors; // Array to hold references to your classes
+};
+
+
+void AMyManager::BeginPlay()
+{
+    Super::BeginPlay();
+
+    // Assuming you have references to the actors, add them to the ManagedActors array
+    // This can be done manually or automatically, based on your game logic
+    ManagedActors.Add(MyActorA);
+    ManagedActors.Add(MyActorB);
+    // Add other actors...
+}
+
+
+void AMyManager::CallInterfaceFunction()
+{
+    for (AActor* Actor : ManagedActors)
+    {
+        if (Actor && Actor->GetClass()->ImplementsInterface(UMyInterface::StaticClass()))
+        {
+            IMyInterface::Execute_MyFunction(Actor); // Call the interface function
+        }
+    }
+}
+
