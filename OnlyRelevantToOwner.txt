@@ -1,0 +1,41 @@
+void AOnlyRelevantToOwner::OnOverlapBegin(UPrimitiveComponent* OverlappedComp,
+	AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex,
+	bool bFromSweep, const FHitResult& SweepResult)
+{
+	if (AThirdPersonMPCharacter* Character = Cast<AThirdPersonMPCharacter>(OtherActor); IsValid(Character))
+	{
+		APlayerController* PlayerController = Cast<APlayerController>(OtherActor->GetInstigatorController());
+		if (PlayerController)
+		{
+			FVector ViewerLocation = PlayerController->GetPawn()->GetActorLocation(); // Assuming you want the location of the player's pawn
+
+			// Pass the correct arguments
+			if (IsNetRelevantFor(this, this, ViewerLocation))
+			{
+				// Execute logic when overlap occurs and the actor is relevant
+				FVector CubeScale = { 3.0f, 3.0f, 3.0f };
+				Cube->SetWorldScale3D(CubeScale);
+			}
+		}
+		
+	}
+
+
+}
+
+bool AOnlyRelevantToOwner::IsNetRelevantFor(const AActor* RealViewer, const AActor* ViewTarget, const FVector& SrcLocation) const
+{
+	// Example of distance-based relevancy
+	FVector ViewerLocation = SrcLocation;
+	FVector ActorLocation = GetActorLocation();
+	float Distance = FVector::Dist(ViewerLocation, ActorLocation);
+
+	// If the actor is within 1000 units, it is relevant
+	if (Distance < 10.f)
+	{
+		return true;
+	}
+
+	// Call the base class to use the default logic if no custom condition matches
+	return Super::IsNetRelevantFor(RealViewer, ViewTarget, SrcLocation);
+}

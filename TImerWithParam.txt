@@ -1,6 +1,6 @@
 void ARain::NetMulticast_StartRainEffect_Implementation(FVector ExplosionLocationNet)
 {
-    GetWorld()->GetTimerManager().SetTimer(RainTimerHandle, [this, ExplosionLocationNet]()
+    GetWorld()->GetTimerManager().SetTimer(RainTimerHandle, [this, ExplosionLocationNet]()   or &ExplosionLocationNet
         {
             StartRain(ExplosionLocationNet);
         }, 2.0f, false);
