@@ -1,0 +1,68 @@
+// IInteractable.h
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "UObject/Interface.h"
+#include "IInteractable.generated.h"
+
+UINTERFACE(MinimalAPI)
+class UInteractable : public UInterface
+{
+    GENERATED_BODY()
+};
+
+class TEST_API IInteractable
+{
+    GENERATED_BODY()
+
+public:
+
+    // Returns the interaction text
+    UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Interaction")
+    FText GetInteractText() const;
+
+    // Called to interact with the object
+    UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Interaction")
+    void Interact(APawn* Pawn);
+};
+
+
+
+// MyInteractableObject.h
+
+#include "IInteractable.h"
+
+class TEST_API AMyInteractableObject : public AActor, public IInteractable
+{
+    GENERATED_BODY()
+
+public:
+
+    virtual FText GetInteractText_Implementation() const override;
+    virtual void Interact_Implementation(APawn* Pawn) override;
+};
+
+
+// MyInteractableObject.cpp
+
+#include "MyInteractableObject.h"
+
+FText AMyInteractableObject::GetInteractText_Implementation() const
+{
+    return FText::FromString("Interact with this object");
+}
+
+void AMyInteractableObject::Interact_Implementation(APawn* Pawn)
+{
+    // TODO: Add interaction logic
+}
+
+FText InteractionText = IInteractable::Execute_GetInteractText(MyInteractableActor);
+
+IInteractable* Interactable = Cast<IInteractable>(MyInteractableActor);
+if (Interactable)
+{
+    FText InteractionText = Interactable->GetInteractText();
+    Interactable->Interact(PlayerPawn);
+}
