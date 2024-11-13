@@ -1,0 +1,19 @@
+
+void UMyUserWidget::NativeConstruct()
+{
+	Super::NativeConstruct();
+	
+	INormalInterface::Execute_NormalInter(GetOwningPlayerPawn());
+	
+}
+
+
+
+class AInterfaceCarSportsCar
+public:
+	UFUNCTION(BlueprintNativeEvent)
+	void NormalInter();
+void AInterfaceCarSportsCar::NormalInter_Implementation()
+{
+	GEngine->AddOnScreenDebugMessage(-1, 10, FColor::Red, TEXT("Finally"));
+}
