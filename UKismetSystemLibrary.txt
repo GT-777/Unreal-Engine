@@ -1,0 +1,1 @@
+UKismetSystemLibrary::PrintString(this, FString::FromInt(AmmoChar));
