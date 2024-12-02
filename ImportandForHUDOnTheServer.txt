@@ -1,0 +1,63 @@
+void ACoin::BeginPlay()
+{
+	Super::BeginPlay();
+
+	if (HasAuthority())
+	{
+		SpherColliosn->OnComponentBeginOverlap.AddDynamic(this, &ACoin::OnSphereOverlap);
+			
+	}
+}
+
+
+
+void ACoin::OnSphereOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
+
+	if (AShooteWithPersonCharacter* Character = Cast<AShooteWithPersonCharacter>(OtherActor))
+	{
+		if (AMyPlayerController* PlayerController = Cast<AMyPlayerController>(Character->GetController()))
+		{
+
+			if (AMyPlayerState* PS = Character->GetPlayerState<AMyPlayerState>())
+			{
+				if (IsValid(ActorComponentManagerCoin))
+				{
+					ActorComponentManagerCoin->Server_AddCoin(1);
+
+					if (ActorComponentManagerCoin->CoinCountOverlap >= 5 && IsValid(PlayerController))
+					{
+						PlayerController->YouWinPC();
+
+					}
+				}
+				//PS->Server_AddCoin(1);
+				SpawnCoin();// Add 1 coin on the server.
+			}
+		}
+		//Server_CollectCoin(Character);
+
+		Destroy();  // Destroy the coin after collection.
+	}
+}
+
+
+
+
+void AMyPlayerController::YouWinPC_Implementation()
+{
+   
+	CharacterHUD = CharacterHUD == nullptr ? Cast<AMyHUD>(GetHUD()) : CharacterHUD;
+
+	
+	if (IsValid(ActorComponentManagerCoin) && IsValid(CharacterHUD))
+	{
+		
+			CharacterHUD->AreYouWin();
+		
+	}
+}
+
+
+UFUNCTION(Client,Reliable)
+void YouWinPC();    HUD գոյություն չունի սերվերում այդ իսկ պատճառով երբ մենք մեթոդը կանչում ենք սերվերից ու մեթոդի մեջ ունենք HUD մեզ վերադարձնում է nullptr ուշադիր պետք  է լինենլ՝ HUD-ը գոյություն ունի only on the client  
