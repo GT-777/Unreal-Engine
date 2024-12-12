@@ -1,0 +1,26 @@
+void AZSWheeledVehiclePawnBaseProcessInstancedStaticMeshDestruction(AActor InOtherActor, UPrimitiveComponent InOtherComp, int32 InInstanceIndex)
+{
+	if (InOtherActor)
+	{
+		UClass L_Class = InOtherActor-GetClass();
+		if (IsValid(L_Class) && L_Class-ImplementsInterface(UZSImpactResponseInterfaceStaticClass()))
+		{
+			 Get the vehicle's current forward speed in miles per hour.
+			float L_Speed = ChaosVehicleMovementComp-GetForwardSpeedMPH();
+
+			 Retrieve the forward direction vector of the actor.
+			FVector L_Direction = GetActorForwardVector();
+
+			 Calculate the mass of the mesh component in metric tons by dividing the mass in kilograms by 1000.
+			const float Mass = GetMesh()-GetMass()  1000.f;
+
+			 Compute the force applied to the vehicle by multiplying its mass (in metric tons) by its speed (in MPH).
+			float Force = Mass  L_Speed;
+
+			 Calculate the impulse vector by multiplying the forward direction with the calculated force.
+			FVector L_Implse = L_Direction  Force;
+
+			IZSImpactResponseInterfaceExecute_HandleDestructibleActors(InOtherActor, InOtherComp, InInstanceIndex, L_Implse);
+		}
+	}
+}
