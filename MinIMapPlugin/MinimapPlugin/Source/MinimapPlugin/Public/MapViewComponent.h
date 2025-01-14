@@ -22,7 +22,7 @@ UCLASS(ClassGroup=(MinimapPlugin), meta=(BlueprintSpawnableComponent))
 class MINIMAPPLUGIN_API UMapViewComponent : public UBoxComponent
 {
 	GENERATED_BODY()
-
+	
 public:	
 	UMapViewComponent();
 	
