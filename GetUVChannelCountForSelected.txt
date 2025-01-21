@@ -1,0 +1,93 @@
+// Fill out your copyright notice in the Description page of Project Settings.
+
+
+#include "StaticMeshUVUtility.h"
+#include "MeshUVDataAsse.h"
+#include "StaticMeshUVUtility.h"
+#include "Engine/StaticMesh.h"
+#include "Editor.h"
+#include "Misc/MessageDialog.h"
+#include "StaticMeshResources.h"
+#include "AssetRegistry/AssetRegistryModule.h"
+#include "AssetToolsModule.h"
+#include "IAssetTools.h"
+#include "Engine/Texture.h"
+#include "EditorAssetLibrary.h"
+
+DEFINE_LOG_CATEGORY_STATIC(UVChannelLog, Log, All);
+
+void UStaticMeshUVUtility::GetUVChannelCountForSelected()
+{
+    TArray<FAssetData> SelectedAssets;
+    GEditor->GetContentBrowserSelections(SelectedAssets);
+
+    FString ResultMessage;
+
+    if (!MeshDataAsset)
+    {
+        FMessageDialog::Open(EAppMsgType::Ok, FText::FromString(TEXT("Failed to load DA_MeshUVDataAsset!")));
+        return;
+    }
+
+   
+
+    for (const FAssetData& AssetData : SelectedAssets)
+    {
+        UStaticMesh* StaticMesh = Cast<UStaticMesh>(AssetData.GetAsset());
+
+        if (IsValid(StaticMesh))
+        {
+          
+            if (MeshDataAsset->StaticMeshes.Contains(StaticMesh))
+            {
+                UE_LOG(UVChannelLog, Log, TEXT("Skipping %s: Already added to Data Asset."), *StaticMesh->GetName());
+                continue;
+            }
+
+            const FStaticMeshRenderData* RenderData = StaticMesh->GetRenderData();
+            if (RenderData)
+            {
+                const FStaticMeshLODResources& LODResources = RenderData->LODResources[0];
+                int32 UVChannelCount = LODResources.GetNumTexCoords();
+
+                UE_LOG(UVChannelLog, Warning, TEXT("UV Channel Count for %s: %d"), *StaticMesh->GetName(), UVChannelCount);
+
+                if (UVChannelCount >= 3)
+                {
+                  
+                    MeshDataAsset->Modify();
+                    MeshDataAsset->StaticMeshes.Add(StaticMesh);
+                 
+                    ResultMessage += FString::Printf(TEXT("%s: Added to Data Asset with %d UV channels\n"), *StaticMesh->GetName(), UVChannelCount);
+                }
+
+               
+              
+            }
+        }
+    }
+
+    if (ResultMessage.IsEmpty())
+    {
+        ResultMessage = TEXT("No StaticMesh assets with 3 or more UV channels were found!");
+    }
+    else
+    {
+        UE_LOG(UVChannelLog, Log, TEXT("Modification complete."));
+
+        
+
+ 
+        if (UEditorAssetLibrary::SaveLoadedAsset(MeshDataAsset, true))
+        {
+            UE_LOG(UVChannelLog, Log, TEXT("Asset saved: %s"), *MeshDataAsset->GetPathName());
+        }
+        else
+        {
+            UE_LOG(UVChannelLog, Error, TEXT("Failed to save the asset: %s"), *MeshDataAsset->GetPathName());
+        }
+    }
+
+    FMessageDialog::Open(EAppMsgType::Ok, FText::FromString(ResultMessage));
+}
+
