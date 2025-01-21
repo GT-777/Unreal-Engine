@@ -1,0 +1,53 @@
+#include "StaticMeshSlotChecker.h"
+#include "EditorUtilityLibrary.h"
+#include "../SlotData/StaticMeshSlotDataAsset.h"
+void UStaticMeshSlotChecker::CheckStaticMeshForSlotName()
+{
+    TArray<UObject*> SelectedAssets = UEditorUtilityLibrary::GetSelectedAssets();
+
+    if (!IsValid(LightSlotsDA))
+    {
+        UE_LOG(LogTemp, Warning, TEXT("Data Asset not found!"));
+        return;
+    }
+
+    for (UObject* Asset : SelectedAssets)
+    {
+        if (UStaticMesh* StaticMesh = Cast<UStaticMesh>(Asset))
+        {
+            TArray<FSlotData> SlotDataArray = LightSlotsDA->Slots;
+            TArray<FName> SlotNamesToCheck;
+            FString MissingSlotsString;
+
+            FSlotData* FoundSlotData = SlotDataArray.FindByPredicate([&](const FSlotData& SlotData) {
+                return StaticMesh == SlotData.StaticMesh;
+                });
+
+            if (FoundSlotData)
+            {
+                SlotNamesToCheck = FoundSlotData->SlotName;
+            }
+
+            for (const FName& SlotName : SlotNamesToCheck)
+            {
+                if (StaticMesh->GetMaterialIndex(SlotName) == INDEX_NONE)
+                {
+                    UE_LOG(SlotLog, Warning, TEXT("Static Mesh -> %s is missing Slot -> %s"), *StaticMesh->GetName(), *SlotName.ToString());
+                    MissingSlotsString += SlotName.ToString() + TEXT("\n");
+                }
+            }
+
+            if (!MissingSlotsString.IsEmpty())
+            {
+                FMessageDialog::Open(
+                    EAppMsgType::Ok,
+                    FText::FromString(FString::Printf(
+                        TEXT("Static Mesh->'%s' is missing the following slots:\n%s"),
+                        *StaticMesh->GetName(),
+                        *MissingSlotsString
+                    ))
+                );
+            }
+        }
+    }
+}
