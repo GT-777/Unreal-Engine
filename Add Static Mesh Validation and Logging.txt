@@ -1,0 +1,87 @@
+// Fill out your copyright notice in the Description page of Project Settings.
+
+
+#include "StaticMeshValidator.h"
+#include "Components/InstancedStaticMeshComponent.h"
+#include "GameFramework/Actor.h"
+#include "EngineUtils.h"
+#include "zSpaceEditorUtilities/StaticMeshUtilities/MeshValidation/InvalidMeshNames.h"
+
+DEFINE_LOG_CATEGORY_STATIC(LogMeshValidation, Log, All);
+
+void UStaticMeshValidator::CheckStaticMeshComponents()
+{
+    UWorld* World = GEditor->GetEditorWorldContext().World();
+   
+    if (!World)
+    {
+        UE_LOG(LogMeshValidation, Warning, TEXT("No valid World found."));
+        FMessageDialog::Open(EAppMsgType::Ok, FText::FromString(TEXT("No valid World found.")));
+        return;
+    }
+
+    if (!InvalidMeshDataAsset)
+    {
+        UE_LOG(LogMeshValidation, Warning, TEXT("Invalid Mesh Data Asset is not set."));
+        return;
+    }
+
+	bool  bIsEndTask = false;
+    int32 InvalidMeshCount = 0;
+
+    for (TActorIterator<AActor> ActorIt(World); ActorIt; ++ActorIt)
+    {
+        AActor* Actor = *ActorIt;
+        if (!Actor)
+        {
+
+            continue;
+        }
+
+        TArray<UStaticMeshComponent*> StaticMeshComponents;
+        Actor->GetComponents<UStaticMeshComponent>(StaticMeshComponents);
+        for (UStaticMeshComponent* Component : StaticMeshComponents)
+        {
+            if (Component)
+            {
+
+                if (Component->GetStaticMesh() == nullptr)
+                {
+                    FString ActorName = Actor->GetName();
+                    UE_LOG(LogMeshValidation, Warning, TEXT("Actor '%s' has a Static Mesh Component with no mesh assigned."), *ActorName);
+
+                    if (InvalidMeshDataAsset->InvalidMeshNameList.Contains(ActorName))
+                    {
+
+                        continue;
+                    }
+                   
+                    InvalidMeshDataAsset->InvalidMeshNameList.Add(ActorName);
+                    InvalidMeshDataAsset->Modify();
+
+                    bIsEndTask = true;
+                    ++InvalidMeshCount;
+                }
+                else
+                {
+                    /* FString ActorName = Actor->GetName();
+                     UE_LOG(LogTemp, Warning, TEXT("Actor '%s' has a valid Static Mesh Component."), *ActorName);*/
+                }
+
+            }
+        }
+
+    }
+
+    if (bIsEndTask)
+    {
+        FString Message = FString::Printf(TEXT("Mesh Validation task completed! %d invalid meshes found."), InvalidMeshCount);
+        FMessageDialog::Open(EAppMsgType::Ok, FText::FromString(Message));
+    }
+    else
+    {
+       
+        FMessageDialog::Open(EAppMsgType::Ok, FText::FromString(TEXT("Mesh Validation task completed! No invalid meshes found.")));
+    }
+	
+}
