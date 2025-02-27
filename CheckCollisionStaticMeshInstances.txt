@@ -1,0 +1,76 @@
+#include "Engine/StaticMeshActor.h"
+#include "EngineUtils.h"
+#include "Misc/MessageDialog.h"
+#include "Components/InstancedStaticMeshComponent.h"
+#include "PhysicsEngine/BodySetup.h"
+
+
+void UCheckStaticMeshInstanceCollision::CheckCollisionStaticMeshInstances(bool bRemoveCollision)
+{
+    FString ResultMessage;
+
+   
+    for (TActorIterator<AActor> ActorIt(GWorld); ActorIt; ++ActorIt)
+    {
+        AActor* Actor = *ActorIt;
+        if (!Actor) continue;
+
+        int32 TotalInstances = 0;
+        bool bHasCollision = false;
+
+       
+        TArray<UInstancedStaticMeshComponent*> InstancedMeshComponents;
+        Actor->GetComponents<UInstancedStaticMeshComponent>(InstancedMeshComponents);
+
+       
+        for (UInstancedStaticMeshComponent* InstancedComponent : InstancedMeshComponents)
+        {
+            if (InstancedComponent && InstancedComponent->GetStaticMesh())
+            {
+                int32 InstanceCount = InstancedComponent->GetInstanceCount();
+                TotalInstances += InstanceCount;
+
+                UBodySetup* BodySetup = InstancedComponent->GetStaticMesh()->GetBodySetup();
+                if (BodySetup && BodySetup->GetCollisionTraceFlag() != ECollisionTraceFlag::CTF_UseDefault)
+                {
+                    bHasCollision = true;
+
+                    
+                    if (bRemoveCollision)
+                    {
+                        InstancedComponent->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+                        InstancedComponent->SetCollisionProfileName(TEXT("NoCollision"));
+                        InstancedComponent->SetGenerateOverlapEvents(false);
+                        InstancedComponent->Modify();
+                    }
+                    else
+                    {
+                        InstancedComponent->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+                        InstancedComponent->SetCollisionProfileName(TEXT("BlockAll"));
+                        InstancedComponent->Modify();
+                    }
+                }
+            }
+        }
+
+    
+        if (TotalInstances >= 0)
+        {
+            FString CollisionStatus = bRemoveCollision ? TEXT("Collision Removed") : TEXT("Collision Restored");
+            ResultMessage += FString::Printf(TEXT("Actor: %s, Static Mesh Instances: %d, %s\n"),
+                *Actor->GetName(), TotalInstances, *CollisionStatus);
+        }
+    }
+
+    
+    if (ResultMessage.IsEmpty())
+    {
+        ResultMessage = TEXT("No static mesh instances found in the level.");
+    }
+
+    
+    FMessageDialog::Open(EAppMsgType::Ok, FText::FromString(ResultMessage));
+}
+
+
+in Build.cs file  "PhysicsCore"
